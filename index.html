@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>Frontend Mentor | Interactive pricing component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+  <div class="title">
+    <h1>Simple, traffic-based pricing</h1>
+    <p>Sign-up for our 30-day trial. No credit card required.</p>
+  </div>
+
+  <main>
+
+
+    <article>
+      <div class="pricing-content">
+        <p><span class="views">100k </span>Pageviews</p>
+        <div class="price"><span>$16.00</span><p> / month</p></div>
+        <div class="slidecontainer">
+          <input type="range" class="slider"  max="100" value="50">
+          <span class="slider-fill"></span>
+          <span class="thumb"></span>
+        </div>
+      </div>
+
+
+      <div class="billing-content">
+        <span>Monthly Billing</span>
+        <label class="check-container">
+          <input type="checkbox" name="billing" id="billing">
+          <span class="checkmark"></span>
+        </label>
+        <span class="yearly">Yearly Billing</span>
+        <!--<span class="discount">25% discount</span>-->
+      </div>
+
+      <div class="details">
+        <ul>
+          <li>Unlimited websites</li>
+          <li>100% data ownership</li>
+          <li>Email reports</li>
+        </ul>
+        <button>Start my trial</button>
+      </div>
+    </article>
+  </main>
+    
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">FrontendMentor</a>. 
+    Coded by <a href="#">Valon Kraja</a>.
+  </div>
+  <script>
+
+    let slider = document.querySelector(".slider")
+    let sliderFill = document.querySelector(".slider-fill")
+    let thumb = document.querySelector(".thumb")
+    console.log(slider)
+    slider.addEventListener("input", function(e){
+      console.log(e.target.value)
+      const maxVal = slider.getAttribute("max")
+      const sliderValue = +slider.value
+      const val = sliderValue / maxVal * 100 + "%"
+      sliderFill.style.width = val
+      thumb.style.left = val
+      thumb.style.transform = `translateX(-${val})`
+    })
+  </script>
+</body>
+</html>

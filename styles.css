@@ -1,0 +1,335 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+:root {
+  --full-slider-bar: hsl(174, 77%, 80%);
+  --slider-background: hsl(174, 86%, 45%);
+  --slider-background-hover: hsl(174, 89%, 37%);
+  --discount-background: hsl(14, 92%, 95%);
+  --discount-text: hsl(15, 100%, 70%);
+  --cta-text: hsl(226, 100%, 87%);
+
+  --pricing-component-bg: hsl(0, 0%, 100%);
+  --main-bg: hsl(230, 100%, 99%);
+  --empty-slider-bar: hsl(224, 65%, 95%);
+  --toggle-bg: hsl(223, 50%, 87%);
+  --text: hsl(225, 20%, 60%);
+  --cta-bg: hsl(227, 35%, 25%);
+  --full-slider-width: 30%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+body {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  background: url(./images/bg-pattern.svg) no-repeat;
+  background-color: var(--main-bg);
+}
+
+article {
+  background-color: var(--pricing-component-bg);
+  width: 500px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+p,
+span,
+ul {
+  color: var(--text);
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--cta-bg);
+  margin: 10px 0px;
+}
+
+.title {
+  text-align: center;
+  background: url("./images/pattern-circles.svg") no-repeat;
+  background-position: center;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 30px 40px;
+  border-top: 1px solid var(--empty-slider-bar);
+  width: 100%;
+}
+
+.details li {
+  font-size: 12px;
+  padding-bottom: 10px;
+  list-style: none;
+}
+
+.details li::before {
+  content: url(./images/icon-check.svg);
+  padding-right: 15px;
+}
+
+.details button {
+  padding: 10px 40px;
+  border-radius: 40px;
+  background-color: var(--cta-bg);
+  color: var(--cta-text);
+  outline: none;
+  border: none;
+  font-size: 12px;
+}
+
+.details button:hover {
+  color: white;
+}
+
+.pricing-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 40px;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.pricing-content > p:first-of-type {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.pricing-content .price {
+  display: flex;
+  align-items: center;
+}
+
+.pricing-content .price span {
+  font-size: 36px;
+  padding-right: 3px;
+  color: var(--cta-bg);
+  font-weight: 900;
+}
+
+.billing-content {
+  position: relative;
+  margin: 20px 0 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.billing-content span {
+  font-size: 14px;
+  margin: 10px;
+}
+
+.yearly {
+  position: relative;
+}
+
+.billing-content .yearly::after {
+  content: "25% discount";
+  position: absolute;
+  padding: 3px 5px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin: 0px;
+  text-wrap: nowrap;
+  top: 0px;
+  left: 105%;
+  background-color: var(--discount-background);
+  color: var(--discount-text);
+  font-weight: 800;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/*.check-container{
+    display: block;
+    width: 50px;
+    height: 28px;
+    border-radius: 50px;
+    background-color: var(--toggle-bg);
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box; 
+    position: relative;
+}*/
+
+.check-container .checkmark {
+  display: block;
+  width: 50px;
+  height: 28px;
+  border-radius: 50px;
+  background-color: var(--toggle-bg);
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.check-container .checkmark::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background-color: white;
+  border-radius: 50%;
+  padding: 0;
+  position: absolute;
+  top: 5px;
+  left: 4px;
+  transition: transform 0.5s ease;
+}
+
+.check-container input[type="checkbox"]:checked ~ .checkmark::after {
+  transform: translateX(24px);
+}
+
+.check-container input[type="checkbox"]:checked ~ .checkmark {
+  background-color: var(--slider-background);
+}
+
+.slidecontainer {
+  width: 100%;
+  margin: 40px 0 0 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 10px;
+  background: var(--empty-slider-bar);
+  outline: none;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+  position: relative;
+}
+
+.slider-fill {
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  height: 8px;
+  width: 0%;
+  border-radius: 20px;
+  background-color: var(--full-slider-bar);
+  pointer-events: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  opacity: 0;
+  /* position: absolute;
+    left: 0%;
+    transform: translateX(-50%);
+    top: -10px;
+    margin: 0px;
+    padding: 0; */
+
+  width: 40px;
+  height: 40px;
+  /*
+    border-radius: 50%;
+    background: var(--slider-background) url(images/icon-slider.svg) no-repeat;
+    background-position: center;
+    box-shadow: 0px 10px 20px var(--slider-background);
+    cursor: pointer;
+    transition: background-color 0.5s; */
+}
+
+.thumb {
+  position: absolute;
+  left: 0%;
+  /* transform: translateX(-50%); */
+  top: -10px;
+  margin: 0px;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--slider-background) url(images/icon-slider.svg) no-repeat;
+  background-position: center;
+  box-shadow: 0px 10px 20px var(--slider-background);
+  cursor: pointer;
+  transition: background-color 0.5s;
+  pointer-events: none;
+}
+
+.slider::-webkit-slider-thumb::before {
+  background: url(./images/icon-slider.svg);
+}
+
+.slider::-webkit-slider-thumb:hover {
+  background-color: var(--slider-background-hover);
+}
+
+.slider::-moz-range-thumb {
+  width: 40px;
+  height: 40px;
+  background: var(--slider-background);
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 550px) {
+  article {
+    width: 400px;
+  }
+  .billing-content .yearly::after {
+    content: "-25%";
+  }
+  .pricing-content {
+    padding: 30px 40px 0 40px;
+    align-items: center;
+    justify-content: center;
+  }
+  .details {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  .slidecontainer {
+    margin: 40px 0;
+  }
+  .price {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .slidecontainer {
+    order: 2;
+  }
+}
